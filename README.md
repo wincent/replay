@@ -24,6 +24,8 @@ If you then execute a macro from a different register (say, "w"), then hitting <
 
 Note that the heuristic here will do what you want most of the time, but it is not infallible. For example, you could record into register "q", then play back register "w", and when you hit <strong>`<CR>`</strong> Replay will execute register "q" rather than "w". This is due to the lack of hooks already mentioned above.
 
+As a last resort fallback, if neither a last-recorded nor last-played macro is detected, Replay will attempt to execute the macro in the "q" register, as that is a popular default register choice.
+
 ## Installation<a name="replay-installation" href="#user-content-replay-installation"></a>
 
 To install Replay, use your plug-in management system of choice.
@@ -47,6 +49,30 @@ To generate help tags under Pathogen, you can do so from inside Vim with:
 
 ```
 :call pathogen#helptags()
+```
+
+## Mappings<a name="replay-mappings" href="#user-content-replay-mappings"></a>
+
+### `<Plug>(Replay)`<a name="replay-plugreplay" href="#user-content-replay-plugreplay"></a>
+
+Replay maps <strong>`<CR>`</strong> to <strong>[`<Plug>(Replay)`](#user-content-plugreplay)</strong>, which executes the last-recorded macro, or the last-executed macro, as described in <strong>[`replay-implementation`](#user-content-replay-implementation)</strong>.
+
+To ues an alternative mapping instead, create a different one in your <strong>`.vimrc`</strong> using <strong>`:nmap`</strong>:
+
+```
+" Instead of <CR>, use <Leader>m
+nmap <unique> <Leader>m <Plug>(Replay)
+```
+
+## Options<a name="replay-options" href="#user-content-replay-options"></a>
+
+<p align="right"><a name="greplayloaded" href="#user-content-greplayloaded"><code>g:ReplayLoaded</code></a></p>
+### `g:ReplayLoaded` (any, default: none)<a name="replay-greplayloaded-any-default-none" href="#user-content-replay-greplayloaded-any-default-none"></a>
+
+To prevent Replay from being loaded, set <strong>`g:ReplayLoaded`</strong> to any value in your <strong>`.vimrc`</strong>. For example:
+
+```
+let g:ReplayLoaded=1
 ```
 
 ## Website<a name="replay-website" href="#user-content-replay-website"></a>
@@ -125,6 +151,11 @@ git archive -o replay-$VERSION.zip HEAD -- .
 Replay is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 ## History<a name="replay-history" href="#user-content-replay-history"></a>
+
+0.2 (14 November 2016)
+
+- Make mapping customizable via <strong>[`<Plug>(Replay)`](#user-content-plugreplay)</strong>.
+- Avoid ugly stack traces for recursive macros that exceed <strong>`'maxfuncdepth'`</strong>.
 
 ### 0.1 (14 November 2016)<a name="replay-01-14-november-2016" href="#user-content-replay-01-14-november-2016"></a>
 

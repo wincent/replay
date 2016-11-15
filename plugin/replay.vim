@@ -60,6 +60,10 @@
 " back register "w", and when you hit |<CR>| Replay will execute register "q"
 " rather than "w". This is due to the lack of hooks already mentioned above.
 "
+" As a last resort fallback, if neither a last-recorded nor last-played macro is
+" detected, Replay will attempt to execute the macro in the "q" register, as
+" that is a popular default register choice.
+"
 " # Installation
 "
 " To install Replay, use your plug-in management system of choice.
@@ -91,6 +95,8 @@
 " ```
 " :call pathogen#helptags()
 " ```
+"
+" @footer
 "
 " # Website
 "
@@ -181,19 +187,46 @@
 "
 " # History
 "
+" 0.2 (14 November 2016)
+"
+" - Make mapping customizable via |<Plug>(Replay)|.
+" - Avoid ugly stack traces for recursive macros that exceed |'maxfuncdepth'|.
+"
 " ## 0.1 (14 November 2016)
 "
 " - Initial release.
 
-" Provide users with means to prevent loading, as recommended in `:h
-" write-plugin`.
+""
+" @option g:ReplayLoaded any
+"
+" To prevent Replay from being loaded, set |g:ReplayLoaded| to any value in your
+" |.vimrc|. For example:
+"
+" ```
+" let g:ReplayLoaded=1
+" ```
 if exists('g:ReplayLoaded') || &compatible || v:version < 700
   finish
 endif
 let g:ReplayLoaded = 1
 
-" Replay last-recorded macro, or @q if no specific last macro has been previously recorded.
-nnoremap <expr> <silent> <CR> empty(&buftype) ? ':call replay#repeat_last_macro()<CR>' : '<CR>'
+nnoremap <expr> <silent> <Plug>(Replay) empty(&buftype) ? ':call replay#repeat_last_macro()<CR>' : '<CR>'
+if !hasmapto('<Plug>(Replay)') && maparg('<CR>', 'n') ==# ''
+  ""
+  " @mapping <Plug>(Replay)
+  "
+  " Replay maps |<CR>| to |<Plug>(Replay)|, which executes the last-recorded
+  " macro, or the last-executed macro, as described in |replay-implementation|.
+  "
+  " To ues an alternative mapping instead, create a different one in your
+  " |.vimrc| using |:nmap|:
+  "
+  " ```
+  " " Instead of <CR>, use <Leader>m
+  " nmap <unique> <Leader>m <Plug>(Replay)
+  " ```
+  nmap <unique> <CR> <Plug>(Replay)
+endif
 
 " Try to figure out which macro was the last updated.
 nnoremap <silent> <expr> q replay#spy_on_registers()
