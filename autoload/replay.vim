@@ -32,22 +32,26 @@ endfunction
 
 " Function called when user presses <CR> to repeat last macro.
 function! replay#repeat_last_macro() abort
-  if s:is_recording
-    call feedkeys("\<CR>", 'n')
-    return
-  endif
-  call s:StoreAndCheckRegisters()
-  " Don't use `normal @q` so as to avoid remapping the `q` and
-  " running `replay#spy_on_registers()`.
-  if s:last_register != ''
-    call feedkeys('@' . s:last_register, 'n')
-    let s:last_register=''
-  else
-    try
-      normal @@
-    catch /E748/ " No previously used register.
-      " Last resort.
-      call feedkeys('@q', 'n')
-    endtry
-  endif
+  try
+    if s:is_recording
+      call feedkeys("\<CR>", 'n')
+      return
+    endif
+    call s:StoreAndCheckRegisters()
+    " Don't use `normal @q` so as to avoid remapping the `q` and
+    " running `replay#spy_on_registers()`.
+    if s:last_register != ''
+      call feedkeys('@' . s:last_register, 'n')
+      let s:last_register=''
+    else
+      try
+        normal @@
+      catch /E748/ " No previously used register.
+        " Last resort.
+        call feedkeys('@q', 'n')
+      endtry
+    endif
+  catch /E132/ " Function call depth is higher than 'maxfuncdepth'
+    echomsg "Hit 'maxfuncdepth'."
+  endtry
 endfunction
