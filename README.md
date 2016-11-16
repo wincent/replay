@@ -152,7 +152,11 @@ Replay is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
 ## History<a name="replay-history" href="#user-content-replay-history"></a>
 
-0.2 (14 November 2016)
+### 0.3 (15 November 2016)<a name="replay-03-15-november-2016" href="#user-content-replay-03-15-november-2016"></a>
+
+- Don't move down a line when hitting <strong>`<CR>`</strong> during macro recording.
+
+### 0.2 (14 November 2016)<a name="replay-02-14-november-2016" href="#user-content-replay-02-14-november-2016"></a>
 
 - Make mapping customizable via <strong>[`<Plug>(Replay)`](#user-content-plugreplay)</strong>.
 - Avoid ugly stack traces for recursive macros that exceed <strong>`'maxfuncdepth'`</strong>.

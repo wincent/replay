@@ -34,7 +34,6 @@ endfunction
 function! replay#repeat_last_macro() abort
   try
     if s:is_recording
-      call feedkeys("\<CR>", 'n')
       return
     endif
     call s:StoreAndCheckRegisters()

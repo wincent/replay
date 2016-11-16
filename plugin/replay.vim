@@ -187,7 +187,11 @@
 "
 " # History
 "
-" 0.2 (14 November 2016)
+" ## 0.3 (15 November 2016)
+"
+" - Don't move down a line when hitting |<CR>| during macro recording.
+"
+" ## 0.2 (14 November 2016)
 "
 " - Make mapping customizable via |<Plug>(Replay)|.
 " - Avoid ugly stack traces for recursive macros that exceed |'maxfuncdepth'|.
