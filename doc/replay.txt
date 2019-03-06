@@ -203,6 +203,11 @@ AUTHORS                                                         *replay-authors*
 
 Replay is written and maintained by Greg Hurrell <greg@hurrell.net>.
 
+Other contributors that have submitted patches include (in alphabetical
+order):
+
+- Paweł Tomak
+
 HISTORY                                                         *replay-history*
 
 0.3 (15 November 2016) ~

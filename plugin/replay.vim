@@ -1,6 +1,8 @@
 " Copyright 2016-present Greg Hurrell. All rights reserved.
 " Licensed under the terms of the MIT license.
 
+scriptencoding utf-8
+
 ""
 " @plugin replay Replay plug-in for Vim
 "
@@ -184,6 +186,11 @@
 " # Authors
 "
 " Replay is written and maintained by Greg Hurrell <greg@hurrell.net>.
+"
+" Other contributors that have submitted patches include (in alphabetical
+" order):
+"
+" - Paweł Tomak
 "
 " # History
 "
