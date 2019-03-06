@@ -44,10 +44,10 @@ function! replay#repeat_last_macro() abort
       let s:last_register=''
     else
       try
-        normal @@
+        normal! @@
       catch /E748/ " No previously used register.
         " Last resort.
-        call feedkeys('@q', 'n')
+        normal! @q
       endtry
     endif
   catch /E132/ " Function call depth is higher than 'maxfuncdepth'
