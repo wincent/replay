@@ -172,6 +172,11 @@ Other contributors that have submitted patches include (in alphabetical order):
 ## History<a name="replay-history" href="#user-content-replay-history"></a>
 
 
+### 1.0 (6 March 2019)<a name="replay-10-6-march-2019" href="#user-content-replay-10-6-march-2019"></a>
+
+- Guard against user remapping of <strong>`@`</strong> (https://github.com/wincent/replay/issues/4).
+
+
 ### 0.3 (15 November 2016)<a name="replay-03-15-november-2016" href="#user-content-replay-03-15-november-2016"></a>
 
 - Don't move down a line when hitting <strong>`<CR>`</strong> during macro recording.

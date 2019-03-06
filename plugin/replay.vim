@@ -194,6 +194,11 @@ scriptencoding utf-8
 "
 " # History
 "
+" ## 1.0 (6 March 2019)
+"
+" - Guard against user remapping of |@|
+"   (https://github.com/wincent/replay/issues/4).
+"
 " ## 0.3 (15 November 2016)
 "
 " - Don't move down a line when hitting |<CR>| during macro recording.
