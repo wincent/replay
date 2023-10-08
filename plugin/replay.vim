@@ -102,11 +102,7 @@ scriptencoding utf-8
 "
 " # Website
 "
-" The official Replay source code repo is at:
-"
-" http://git.wincent.com/replay.git
-"
-" Mirrors exist at:
+" Source code:
 "
 " - https://github.com/wincent/replay
 " - https://gitlab.com/wincent/replay

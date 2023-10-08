@@ -126,11 +126,7 @@ To prevent Replay from being loaded, set |g:ReplayLoaded| to any value in your
 <
 WEBSITE                                                         *replay-website*
 
-The official Replay source code repo is at:
-
-http://git.wincent.com/replay.git
-
-Mirrors exist at:
+Source code:
 
 - https://github.com/wincent/replay
 - https://gitlab.com/wincent/replay
