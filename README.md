@@ -1,6 +1,7 @@
-
 # replay<a name="replay-replay" href="#user-content-replay-replay"></a>
 
+> [!NOTE]
+> This plugin is deprecated and will not receive further updates. As noted in [replay#5](https://github.com/wincent/replay/issues/5), equivalent functionality to this plugin has been baked into Neovim by default [since v0.7.0](https://github.com/neovim/neovim/commit/8a4e26c6fe) (see `:help Q`), and the addition of `reg_recording()` to Vim in [vim@0b6d911e5](https://github.com/vim/vim/commit/0b6d911e5) makes this plugin largely redundant now (see [the issue](https://github.com/wincent/replay/issues/5) for a comparable, short Vimscript snippet).
 
 ## Intro<a name="replay-intro" href="#user-content-replay-intro"></a>
 
